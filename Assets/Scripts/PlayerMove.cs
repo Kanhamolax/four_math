@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    public GameObject porta;
     float _velocidadeFrente;
     float _velocidadeTras;
     float _velocidadeGirar;
@@ -13,6 +14,7 @@ public class PlayerMove : MonoBehaviour
         _velocidadeFrente = 5;
         _velocidadeTras = 2;
         _velocidadeGirar = 60;
+        DataControler.movePermition = true;
     }
 
     // Update is called once per frame
@@ -26,6 +28,13 @@ public class PlayerMove : MonoBehaviour
 
         //Medodo Update e executado a cada Frame
         void Update()
+        {
+                Move();
+        }
+
+    void Move()
+    {
+        if(DataControler.movePermition)
         {
             if (Input.GetKey("w"))
             {
@@ -46,10 +55,9 @@ public class PlayerMove : MonoBehaviour
             {
                 transform.Rotate(0, (_velocidadeGirar * Time.deltaTime), 0);
             }
-           if (Input.GetKey(KeyCode.Space))
-           {
-                transform.Translate(0, (2* Time.deltaTime), 0);
-           }
+          
+        }
+
     }
 }
 
