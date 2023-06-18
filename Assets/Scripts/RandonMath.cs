@@ -23,18 +23,16 @@ public class RandonMath : MonoBehaviour
         q1.color = Color.red;
         q2.color = Color.red;
         q3.color = Color.red;
+        DataControler.okp1 = true;
 
     }
     void Update()
     {
-        if(q1.color==Color.green && q2.color == Color.green&& q3.color == Color.green)
+        if(q1.color==Color.green && q2.color == Color.green&& q3.color == Color.green&&DataControler.okp1)
         {
-            p1.transform.Rotate(0, 90, 0);
-            p2.transform.Rotate(0, -90, 0);
-            q1.color = Color.white;
-            q2.color = Color.white;
-            q3.color = Color.white;
-        
+            StartCoroutine(WaitChangeCollor());
+            DataControler.okp1 = false;
+
         }
         
     }
@@ -349,6 +347,16 @@ public class RandonMath : MonoBehaviour
                 }
                 break;
         }
+
+    }
+    IEnumerator WaitChangeCollor()
+    {
+        yield return new WaitForSeconds(2);
+        p1.transform.Rotate(0, 90, 0);
+        p2.transform.Rotate(0, -90, 0);
+        q1.color = Color.white;
+        q2.color = Color.white;
+        q3.color = Color.white;
 
     }
 }

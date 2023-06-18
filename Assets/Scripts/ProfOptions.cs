@@ -12,7 +12,7 @@ public class ProfOptions : MonoBehaviour
         if (collision.gameObject == player)
         {
 
-          botao.SetActive(true);
+            botao.SetActive(true);
             DataControler.prof = nProf;
 
 

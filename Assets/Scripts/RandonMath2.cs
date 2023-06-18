@@ -23,20 +23,46 @@ public class RandonMath2 : MonoBehaviour
         q1.color = Color.red;
         q2.color = Color.red;
         q3.color = Color.red;
+        DataControler.okp2 = true;
+        DataControler.okp3 = true;
+        DataControler.okp4 = true;
+        
 
     }
     void Update()
     {
-        if(q1.color==Color.green && q2.color == Color.green&& q3.color == Color.green)
-        {
-            p1.transform.Rotate(0, 90, 0);
-            p2.transform.Rotate(0, -90, 0);
-            q1.color = Color.white;
-            q2.color = Color.white;
-            q3.color = Color.white;
-           
-        }
+        Abre(DataControler.prof);
         
+    }
+    void Abre(int op)
+    {
+        if(op==1)
+        {
+            if (q1.color == Color.green && q2.color == Color.green && q3.color == Color.green&& DataControler.okp2)
+            {
+                StartCoroutine(WaitChangeCollor());
+                DataControler.okp2 = false;
+            }
+        }
+       else  if (op == 2)
+        {
+            if (q1.color == Color.green && q2.color == Color.green && q3.color == Color.green&&DataControler.okp3)
+            {
+                StartCoroutine(WaitChangeCollor());
+                DataControler.okp3 = false;
+            }
+
+        }
+        else if (op == 3)
+        {
+            if (q1.color == Color.green && q2.color == Color.green && q3.color == Color.green&&DataControler.okp4)
+            {
+                StartCoroutine(WaitChangeCollor());
+                DataControler.okp4 = false;
+
+            }
+        }
+
     }
     public void Facil()
     {
@@ -349,6 +375,16 @@ public class RandonMath2 : MonoBehaviour
                 }
                 break;
         }
+
+    }
+    IEnumerator WaitChangeCollor()
+    {
+        yield return new WaitForSeconds(2);
+        p1.transform.Rotate(0, 90, 0);
+        p2.transform.Rotate(0, -90, 0);
+        q1.color = Color.white;
+        q2.color = Color.white;
+        q3.color = Color.white;
 
     }
 }
